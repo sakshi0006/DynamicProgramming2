@@ -1,0 +1,37 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+   static int cacheRunningSum[];
+    public Codechef(int num[])
+    {
+        cacheRunningSum=new int[num.length+1];
+        for(int i=0;i<num.length;i++)
+        {
+            cacheRunningSum[i+1]=cacheRunningSum[i]+num[i];
+        }
+    }
+    public static int findSumRange(int i,int j)
+    {
+        return (cacheRunningSum[j+1]-cacheRunningSum[i]);
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	    Scanner sc=new Scanner(System.in);
+	    System.out.println("Enter the size");
+	    int n=sc.nextInt();
+	    System.out.println("Enter the values :");int num[]=new int[n];
+	    for(int i=0;i<n;i++)num[i]=sc.nextInt();
+	     Codechef cc=new  Codechef(num);
+       System.out.println("Enter number of queries");
+       int q=sc.nextInt();
+       while(q-->0)
+       {System.out.println("Enter the range values :");
+	   int a=sc.nextInt();
+	   int  b=sc.nextInt();
+	     System.out.println("Result="+findSumRange(a,b));
+	}
+  }
+}
